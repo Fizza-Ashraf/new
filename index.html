@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIT Spotlight Page</title>
+    <style>
+
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .main-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #750014; /* Maroon color */
+            color: white;
+            height: 60px; /* Header height */
+            padding: 15px;
+        }
+
+        .logo img {
+            height: 70px;
+            margin-left: 20px;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu ul li {
+            margin: 0 10px;
+        }
+
+        .nav-menu ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+        }
+
+        .nav-menu ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-icon {
+            background-color: red;
+            color: white;
+            height: 90px;
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-right: -20px;
+        }
+
+        .search-icon i {
+            font-size: 18px;
+        }
+
+        #search-toggle {
+            display: none;
+        }
+
+        .search-bar {
+            position: absolute;
+            top: 0;
+            right: 60px;
+            background-color: white;
+            height: 60px;
+            width: 0;
+            overflow: hidden;
+            transition: width 0.3s ease;
+        }
+
+        .search-bar input {
+            height: 100%;
+            width: 100%;
+            border: none;
+            outline: none;
+            padding: 0 10px;
+            font-size: 16px;
+        }
+
+        #search-toggle:checked ~ .search-bar {
+            width: 200px; /* Expanded width of search bar */
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+            overflow: hidden;
+        }
+        .sidebar {
+            width: 20%;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            align-self: flex-start;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .sidebar h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #0073e6;
+        }
+        .sidebar h3 {
+            margin-top: 0;
+        }
+        .content {
+            width: 80%;
+            overflow-y: auto;
+            padding-right: 20px;
+        }
+        .highlight {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .highlight img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .highlight h2 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .highlight p {
+            font-size: 14px;
+            color: #555;
+        }
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card {
+            background-color: #fff;
+            width: 48%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .card-content h3 {
+            font-size: 16px;
+            margin: 0 0 10px;
+        }
+        .card-content p {
+            font-size: 14px;
+            color: #555;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        footer p {
+            font-size: 14px;
+            margin: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #e0e0e0;
+            padding: 10px 20px;
+        }
+        header p {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+        }
+        .main-container {
+            display: flex;
+            max-width: 100%;
+            margin: 20px auto;
+            gap: 20px;
+        }
+
+        
+        .sidebar {
+            width: 20%;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            align-self: flex-start;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .sidebar h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: black;
+        }
+        .content {
+            width: 80%;
+        }
+        .highlight {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            padding: 20px;
+            
+            margin-bottom: 20px;
+        }
+        .highlight img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .highlight h2 {
+            font-size: 32px;
+            margin: 10px 0;
+            font-family: neue-haas-grotesk-text;
+            font-weight: 500;
+        }
+        .highlight p {
+            font-size: 14px;
+            color: #555;
+        }
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card {
+            background-color: #fff;
+            width: 48%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .card-content h3 {
+            font-size: 16px;
+            margin: 0 0 10px;
+        }
+        .card-content p {
+            font-size: 18px;
+            color: #555;
+            font-family: neue-haas-grotesk-text;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        footer p {
+            font-size: 14px;
+            margin: 0;
+        }
+        ul li::before {
+            content: "- ";
+        }
+
+        ul li::before {
+            content: "- ";
+        }
+        .sidebar p::before {
+    content: "- ";
+}
+
+
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo img {
+        height: 50px;
+        margin-left: 0;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .nav-menu ul li {
+        margin: 10px 0;
+    }
+
+    .main-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .highlight h2 {
+        font-size: 24px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .search-bar {
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        padding: 10px;
+    }
+
+
+    .nav-menu ul li a {
+        font-size: 14px;
+    }
+
+    .search-icon {
+        height: 60px;
+        width: 80px;
+    }
+
+    .highlight h2 {
+        font-size: 18px;
+    }
+
+    .card-content h3 {
+        font-size: 14px;
+    }
+
+    .card-content p {
+        font-size: 12px;
+    }
+
+    footer p {
+        font-size: 12px;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="#">
+                <img src="newlogo.png" alt="MIT Logo">
+            </a>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#">Education</a></li>
+                <li><a href="#">Research</a></li>
+                <li><a href="#">Innovation</a></li>
+                <li><a href="#">Admissions + Aid</a></li>
+                <li><a href="#">Campus Life</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Alumni</a></li>
+                <li><a href="#">About MIT</a></li>
+            </ul>
+        </nav>
+
+        <!-- Search Container -->
+        <div class="search-container">
+            <label for="search-toggle" class="search-icon">
+                <i class="fas fa-search"></i>
+            </label>
+            <input type="checkbox" id="search-toggle">
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+        </div>
+    </header>
+
+    
+
+    <div class="main-container">
+        <div class="sidebar">
+            <h3>Explore websites, people, and locations</h3>
+            <ul>
+                <li><a href="#">Prospective students</a></li>
+                <li><a href="#">Current students</a></li>
+                <li><a href="#">Faculty & staff</a></li>
+                <li><a href="#">Alumni</a></li>
+                <li><a href="#">Parents & families</a></li>
+            </ul>
+            <h3>Featured Topic</h3>
+            <p>Climate Change</p>
+        </div>
+
+        <div class="content">
+            <div class="top"><p>Updates from campus: Read the latest from MIT and its leaders regarding events on campus.</p></div>
+            <div class="highlight">
+                <img src="img1.jpg" alt="MIT Highlight">
+                <h1>Industrial processes that use heat to purify a mixture’s components account for roughly 10 percent of the energy use in the U.S. 
+                    Zachary Smith is developing highly efficient filters that do the job at room temperature, reducing costs and environmental impact.</h1>
+                <p>Industrial processes that use heat to purify a mixture’s components account for roughly 10 percent of the energy use in the U.S...</p>
+            </div>
+
+            <div class="section">
+                <div class="card">
+                    <img src="img2.jpg" alt="Around Campus">
+                    <div class="card-content">
+                        <h3>Around Campus</h3>
+                        <p>More puzzles, less sleep: 
+                            The annual three-day MIT Mystery Hunt, a tradition since 1981, returns to campus on January 17. Here’s how last year’s puzzle marathon played out.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img3.jpg" alt="Community Spotlight">
+                    <div class="card-content">
+                        <h3>Community Spotlight</h3>
+                        <p>To help design large structures, Zane Schemmer writes algorithms that optimize function, minimize carbon footprint, and produce a manufacturable result. The goal is “to make it easier to take our designs out of the computer and create them in real life,” he says.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img4.jpg" alt="#ThisIsMIT">
+                    <div class="card-content">
+                        <h3>#ThisIsMIT</h3>
+                        <p>Via @mitsailingpavilion on Instagram: “Just because it’s winter doesn't mean we will stop posting sunset pics! Work is underway to be ready for the next season - lots of boats means lots of projects!”"</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img5.jpg" alt="Research">
+                    <div class="card-content">
+                        <h3>Research</h3>
+                        <p>CSAIL researchers’ new AI model produces human-like vocal imitations of everyday sounds. Like a sketch of a visual scene, “our method captures the abstract, non-phono-realistic ways humans express the sounds they hear,” Kartik Chandra says.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="img7.jpg" alt="#ThisIsMIT">
+                    <div class="card-content">
+                        <h3>COMMUNITY SPOTLIGHT</h3>
+                        <p>Ariel White explores how previously incarcerated people and others on the margins of U.S. politics might participate more fully in our democracy. Although they tend to be left out of discussions on voting, “I think there is a much broader story to be told here,” she says.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img8.jpg" alt="Research">
+                    <div class="card-content">
+                        <h3>#THISISMIT</h3>
+                        <p>Via @mitlogs on Instagram: 
+                            “Big thanks to everyone who showed up to our Fall Concert: Avalog the Last Harmonybender!! Stay tuned for another great semester of music”</p>
+                    </div>
+                </div>
+
+            
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Massachusetts Institute of Technology | 77 Massachusetts Avenue, Cambridge, MA, USA</p>
+    </footer>
+</body>
+</html>
